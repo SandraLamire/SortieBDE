@@ -3,7 +3,7 @@
 {% block title %}Campus{% endblock %}
 
 {% block body %}
-<h2>Filtrer les campus</h2>
+    <h2>Filtrer les campus</h2>
 
     {# pas de formType pour un seul champ mais un queryBuilder dans le VilleController #}
     <form method="get" action="{{ path('campus_filtrer') }}">
@@ -22,24 +22,25 @@
             </thead>
 
             <tbody>
-                {% for campus in allCampus %}
-                    <tr>
-                        <td>{{ campus.nom }}</td>
-                        <td>
-                            {# liens Modifier / Supprimer #}
-                            <a href="{{ path('campus_modifier', {'id': campus.id}) }}">Modifier </a>
-                            <a href="{{ path('campus_supprimer', {'id': campus.id}) }}"> - Supprimer</a>
-                        </td>
-                    </tr>
-                {% endfor %}
+            <tr>
+                {{ form_start(formCampus) }}
+                <td>{{ form_row(formCampus.nom) }}</td>
+                <td>
+                    <button type="submit">Ajouter/Modifier</button>
+                </td>
+                {{ form_end(formCampus) }}
+            </tr>
+            {% for campus in allCampus %}
                 <tr>
-                    {{ form_start(formCampus) }}
-                    <td>{{ form_row(formCampus.nom) }}</td>
+                    <td>{{ campus.nom }}</td>
                     <td>
-                        <button type="submit">Ajouter</button>
+                        {# liens Modifier / Supprimer #}
+                        <a href="{{ path('campus_modifier', {'id': campus.id}) }}">Modifier </a>
+                        <a href="{{ path('campus_supprimer', {'id': campus.id}) }}"> - Supprimer</a>
                     </td>
-                    {{ form_end(formCampus) }}
                 </tr>
+            {% endfor %}
+
             </tbody>
         </table>
     {% endif %}

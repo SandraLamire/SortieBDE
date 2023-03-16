@@ -19,7 +19,7 @@ class CampusController extends AbstractController
     {
         $allCampus = $campusRepository->findBy([], ['nom' => 'ASC']);
 
-        if(!$allCampus){
+        if (!$allCampus) {
             throw $this->createNotFoundException("Oups, les campus n'ont pas été trouvés !");
         }
 
@@ -44,18 +44,18 @@ class CampusController extends AbstractController
         $saisie = $request->query->get('saisie');
 
         // pas de message d'erreur car pas de saisie = affichage de tous les campus
-        if(empty($saisie)){
+        if (empty($saisie)) {
             return $this->redirectToRoute('campus_afficher');
         }
 
         $allCampus = $campusRepository->createQueryBuilder('v')
             ->where('v.nom LIKE :nom')
-            ->setParameter('nom', '%'.$saisie.'%')
+            ->setParameter('nom', '%' . $saisie . '%')
             ->orderBy('v.nom', 'ASC')
             ->getQuery()
             ->getResult();
 
-        if(empty($allCampus)){
+        if (empty($allCampus)) {
             // throw $this->createNotFoundException("Oups, aucun campus n'a été trouvé !");
             // remplacé par message
             $this->addFlash("error", "aucun campus contenant $saisie n'a été trouvé !");
@@ -98,7 +98,7 @@ class CampusController extends AbstractController
         if (!$campus) {
             throw $this->createNotFoundException("Ce campus n'a pas pu être supprimé !");
         }
-        if (!$allCampus ) {
+        if (!$allCampus) {
             throw $this->createNotFoundException("La liste des campus n'est pas accessible !");
         }
 
@@ -106,15 +106,18 @@ class CampusController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+            $campus->setNom($campus->getNom());
+
+            $campusRepository->save($campus, true);
 
             $this->addFlash('success', 'Le campus a été modifié avec succès.');
             return $this->redirectToRoute('campus_afficher', ['id' => $campus->getId()]);
         }
 
         return $this->render('campus/afficherCampus.html.twig', [
-            'form' => $form->createView(),
+            'formCampus' => $form->createView(),
             'campus' => $campus,
+            'allCampus' => $allCampus
         ]);
     }
 
