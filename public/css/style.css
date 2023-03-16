@@ -1,0 +1,608 @@
+/*-----------------------------------La partie Accueil----------------------------------*/
+* {
+    margin: 2px;
+}
+
+body {
+    background-color: #232946;
+    background-size: cover;
+    color: #b8c1ec;
+    font-family: 'Golos Text', sans-serif;
+}
+
+/*-----------------------------------Bar de naviguation----------------------------------*/
+
+.logo {
+    height: 150px;
+    width: 150px;
+}
+
+.navBarLogo {
+    justify-items: center;
+    display: flex;
+    top: 5%;
+}
+
+/*.navbartitre {*/
+/*    justify-items: center;*/
+/*    display: flex;*/
+/*    top: 5%;*/
+/*    left: 10%;*/
+/*}*/
+
+.navBar2 {
+    position: absolute;
+    top: 5%;
+    left: 25%;
+}
+
+.navBar2 a {
+    color: #eebbc3;
+    text-decoration: none;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.navBar2 a:hover {
+    color: #eebbc3;
+}
+
+
+.navLink {
+    border: 5px solid;
+    border-color: #eebbc3;
+    -webkit-mask: conic-gradient(from 180deg at top 8px right 8px, #232946 90deg, #232946 0) var(--_i, 200%) 0  /200% var(--_i, 8px) border-box no-repeat,
+    conic-gradient(at bottom 8px left 8px, #232946 90deg, #232946 0) 0 var(--_i, 200%)/var(--_i, 8px) 200% border-box no-repeat,
+    linear-gradient(#232946 0 0) padding-box no-repeat;
+    transition: .3s, -webkit-mask-position .3s .3s;
+}
+
+.navLink:hover {
+    --_i: 100%;
+    color: #eebbc3;
+    transition: .3s, -webkit-mask-size .3s .3s;
+}
+
+
+/*--------------------------------------------------------------Partie infos utilisateur----------------------------------------------------------------------------------------*/
+
+.infosUser {
+    display: grid;
+    justify-content: right;
+}
+
+/*---------------------------------------------------------------Partie formulaire de searcrh------------------------------------------------------------*/
+
+.formAccueil {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    padding: 40px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.formAccueil label {
+    display: inline-block;
+    width: 30%;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.formAccueil input {
+    display: inline-block;
+    width: 20%;
+    background: transparent;
+    border: hidden;
+    border-bottom: solid 1px;
+    border-color: #fffffe;
+    text-align: right;
+    padding-right: 10px;
+}
+
+/*--------------------------------------------------------------------------Tableau----------------------------------------------------------------------*/
+.div-table {
+    display: flex;
+    justify-items: center;
+    position: absolute;
+    left: 10%;
+    margin-top: 70px;
+    overflow: auto;
+    max-height: 300px;
+}
+
+table {
+    width: 90%;
+    font-size: .9em;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+    table-layout: fixed;
+    border-collapse: separate;
+    border-radius: 5px;
+}
+
+th {
+    text-align: center;
+}
+
+thead {
+    top: 0;
+    position: sticky;
+    font-weight: bold;
+    color: #0B0A07;
+    background: #eebbc3;
+}
+
+td, th {
+    padding: 1em .5em;
+    vertical-align: middle;
+}
+
+td {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    background: transparent;
+}
+
+/*--------------------------------------------------------------------------Partie Creation sortie----------------------------------------------------------------------*/
+.formGeneral {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 70%;
+    width: 500px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: #121629;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 1);
+    border-radius: 10px;
+}
+
+.creationSortieCamp,
+.creationSortieLieu,
+.creationSortieNom,
+.creationSortieInfo,
+.creationSortieHd,
+.creationSortieDuree,
+.creationSortieDateLimiteInscription,
+.creationSortieNbInscrMax {
+    margin-top: 15px;
+}
+
+.formGeneral input {
+    display: inline-block;
+    color: #fffffe;
+    width: 100%;
+    background: transparent;
+    border: hidden;
+    border-bottom: solid 1px;
+    border-color: #fffffe;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.formGeneral input::placeholder {
+    color: #b8c1ec;
+}
+
+.creationSortieInfo textarea {
+    display: inline-block;
+    color: #fffffe;
+    width: 100%;
+    background: transparent;
+    border: hidden;
+    border-bottom: solid 1px;
+    border-color: #fffffe;
+    text-align: left;
+    padding-right: 10px;
+}
+
+.formGeneral textarea::placeholder {
+    color: #fffffe;
+}
+
+.creationSortieCamp select {
+    display: inline-block;
+    color: #fffffe;
+    width: 100%;
+    background: transparent;
+    border: hidden;
+    border-bottom: solid 1px;
+    border-color: #fffffe;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.creationSortieCamp select {
+    color: #b8c1ec;
+    background: #121629;
+}
+
+.creationSortieLieu select {
+    display: inline-block;
+    width: 100%;
+    color: #b8c1ec;
+    background: #121629;
+    border: hidden;
+    border-bottom: solid 1px;
+    border-color: #fffffe;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.btnCreationSortie {
+    justify-content: space-between;
+}
+
+.titreForm {
+    margin: 0 0 10px;
+    /*padding: 0;*/
+    font-size: 25px;
+    text-align: center;
+    color: #fffffe;
+}
+
+/*--------------------------------------------------------------------------Mon profil----------------------------------------------------------------------*/
+.profil {
+    height: 80.9%;
+}
+.profil {
+    color: #31ce0d;
+}
+/*--------------------------------------------------------------Modifier sortie----------------------------------------------------------------------------------------*/
+.modifierSortie {
+    height: 70%;
+}
+
+.inputContainer textarea {
+    display: inline-block;
+    color: #fffffe;
+    width: 100%;
+    background: transparent;
+    border: hidden;
+    border-bottom: solid 1px;
+    border-color: #fffffe;
+    text-align: left;
+    padding-right: 10px;
+}
+
+.inputContainer select {
+    display: inline-block;
+    width: 100%;
+    color: #b8c1ec;
+    background: #121629;
+    border: hidden;
+    border-bottom: solid 1px;
+    border-color: #fffffe;
+    text-align: right;
+    padding-right: 10px;
+}
+
+/*--------------------------------------------------------------Annuler Sortie----------------------------------------------------------------------------------------*/
+.infoSortie {
+    margin-top: 40px;
+    cursor: none;
+}
+
+.annulerSortieInput {
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+.annulerSortie {
+    height: 60%;
+}
+
+/*--------------------------------------------------------------Afficher Sortie----------------------------------------------------------------------------------------*/
+.infoSortieAfficher {
+    margin-top: 25px;
+    cursor: none;
+}
+/*--------------------------------------------------------------Afficher Participant----------------------------------------------------------------------------------------*/
+.infoOrganisateur {
+    margin-top:60px;
+    cursor: none;
+}
+/*--------------------------------------------------------------------------Creer profil----------------------------------------------------------------------*/
+.creerProfil{
+    top: 53%;
+    height: 79%;
+}
+/*--------------------------------------------------------------------------Bouttons----------------------------------------------------------------------*/
+
+.link_button {
+    background: #eebbc3;
+    color: #232946;
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+    border-radius: 20px;
+
+}
+
+.link_button:hover {
+    background: #ff0000;
+}
+
+.annuler {
+    background: #eebbc3;
+    color: #232946;
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+}
+
+.annuler:hover {
+    background: #ff0000;
+}
+
+.publier {
+    background: #eebbc3;
+    color: #232946;
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+}
+
+.publier:hover {
+    background: #31ce0d;
+}
+
+.enregistrer {
+    background: #eebbc3;
+    color: #232946;
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+}
+
+.enregistrer:hover {
+    background: #31ce0d;
+}
+
+.lieuNouveau {
+    background: #eebbc3;
+    color: #232946;
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+    border-radius: 20px 20px 40px 20px;
+
+
+}
+
+.lieuNouveau:hover {
+    background: #121629;
+    color: #31ce0d;
+}
+
+.btnAccueil {
+    margin-top: 10px;
+    color: #232946;
+    justify-content: space-evenly;
+    display: flex;
+}
+
+.recherche {
+    background: #eebbc3;
+    color: #232946;
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+}
+
+.recherche:hover {
+    color: #eebbc3;
+    background: #232946;
+}
+
+.btnCreerSortie {
+    background: #eebbc3;
+    color: #232946;
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+}
+
+.btnCreerSortie:hover {
+    color: #eebbc3;
+    background: #232946;
+}
+.loadServer span{
+}
+
+/*--------------------------------------------------------------------------Titre----------------------------------------------------------------------*/
+.sortieH2 {
+    --b: 0.1em; /* l'épaiseur du trait */
+    --c: #eebbc3; /* la couleure */
+
+    color: rgba(255, 0, 0, 0);
+    padding-block: var(--b);
+    background: linear-gradient(var(--c) 50%, #fffffe 0) 0% calc(100% - var(--_p, 0%))/100% 200%,
+    linear-gradient(var(--c) 0 0) 0% var(--_p, 0%)/var(--_p, 0%) var(--b) no-repeat;
+    -webkit-background-clip: text, padding-box;
+    background-clip: text, padding-box;
+    transition: .3s var(--_s, 0s) linear, background-size .3s calc(.3s - var(--_s, 0s));
+}
+
+.sortieH2:hover {
+    --_p: 100%;
+    --_s: .3s;
+}
+
+/*--------------------------------------------------------------------------Titre----------------------------------------------------------------------*/
+a {
+    text-decoration: none;
+    color: #eebbc3;
+}
+
+
+h1 {
+    margin-top: 0;
+    font-family: 'Roboto', serif;
+}
+
+body > .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header img {
+    height: 70px;
+}
+
+main {
+    flex: 1;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+
+nav li {
+    margin-right: 1rem; /*pourcentage de taille en fonction du zoom 1 rem = 10px pour zoom = 100%*/
+}
+
+/*----------------------Creation Sortie Formulaire------------------*/
+/*.formGeneral{*/
+/*    background-color: #B0413E;*/
+/*    border-radius: 20px;*/
+/*    box-sizing: border-box;*/
+/*    height: 500px;*/
+/*    padding: 20px;*/
+/*    width: 320px;*/
+/*}*/
+/*.titreForm{*/
+/*    color: #5eb5e0;*/
+/*    font-family: sans-serif;*/
+/*    font-size:36px;*/
+/*    font-weight:600;*/
+/*    margin-top: 30px;*/
+/*}*/
+/*.inputContainer{*/
+/*    height: 50px;*/
+/*    position: relative;*/
+/*    width: 100%;*/
+/*}*/
+/*.creationSortieNom{*/
+/*    margin-top: 40px;*/
+/*}*/
+/*************************** Module 6 Flash *******************************/
+
+.flash {
+    padding: 20px;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+    color: #132135;
+}
+
+.flash-success {
+    background-color: lawngreen
+}
+
+.flash-error {
+    background-color: red
+}
+
+.error ul li {
+    list-style: none;
+    color: red;
+}
+
+.flash-warning {
+    background-color: orangered;
+}
+
+/*************************** Form connexion *******************************/
+
+.loginBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: #151829;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+    border-radius: 10px;
+}
+
+.loginBox .formTitre {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+}
+
+.loginBox .userBoxy {
+    position: relative;
+}
+
+.loginBox .userBoxy input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+.loginBox .userBoxy label {
+    position: absolute;
+    left: 0;
+    font-size: 16px;
+    bottom: 70px;
+    color: #eebbc3;
+}
+
+.loginBox form .submit {
+    background: #eebbc3;
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #FEECF0;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 40px;
+    letter-spacing: 4px
+}
+
+.loginBox .submit:hover {
+    background: #eebbc3;
+    color: #FEECF0;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #eebbc3,
+    0 0 25px #eebbc3,
+    0 0 50px #eebbc3,
+    0 0 100px #eebbc3;
+}
+
+

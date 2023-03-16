@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="infosUser">
+        <div class="date_jour">
+            <h3>Date du jour : {{ dateDuJour | date ('d/m/Y') }}</h3>
+        </div>
+        <div class="user">
+            <h3>Participant : {{ app.user.pseudo }}</h3>
+        </div>
+    </div>
+    <div class="formAccueil">
+        {{ form_start(filtresForm) }}
+        {{ form_rest(filtresForm) }}
+
+        <div class="btnAccueil">
+            <div class="searchBox">
+                <button type="submit" class="link_button recherche">
+                    Rechercher
+                </button>
+                {{ form_end(filtresForm) }}
+            </div>
+            {% if app.user.actif %}
+                <a href="{{ path('sortie_creation') }}">
+                    <button class="link_button btnCreerSortie" type="button">Créer une sortie
+                    </button>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if sorties %}
+        <div class="div-table">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Nom de la sortie</th>
+                    <th>Date de la sortie</th>
+                    <th>Clôture</th>
+                    <th>inscrits/places</th>
+                    <th>Etat</th>
+                    <th>Inscrit</th>
+                    <th>Organisateur</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for sortie in sorties %}
+                    <tr>
+                        <td>{{ sortie.nom }}</td>
+                        <td>{{ sortie.dateHeureDebut | date ('d/m/Y') }}</td>
+                        <td>{{ sortie.dateLimiteInscription | date ('d/m/Y') }}</td>
+                        <td>{{ sortie.participants.count }}/{{ sortie.nbInscriptionsMax }}</td>
+                        <td>{{ sortie.etat.libelle }}</td>
+                        <td>
+                            {% if sortie in app.user.sorties %}
+                                X
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{{ path('participant_profil_organisateur', {'id': sortie.id}) }}">{{ sortie.organisateur.nom }}</a>
+                        </td>
+                        <td>
+                            {% if sortie.etat.libelle is not same as "Activité en cours" and sortie.etat.libelle is not same as "Créee" %}
+                                <a href="{{ path('sortie_afficher', {'id': sortie.id}) }}">Afficher</a>
+                            {% endif %}
+                            {% if sortie in app.user.sorties and sortie.participants.count >0 and app.user.actif %}
+                                <a href="{{ path('sortie_desinscription', {'id': sortie.id}) }}"> - Se désister</a>
+                            {% endif %}
+                            {% if sortie not in app.user.sorties and sortie.etat.libelle is same as "Ouverte" and sortie.participants.count < sortie.nbInscriptionsMax and app.user.actif %}
+                                <a href="{{ path('sortie_inscription', {'id': sortie.id}) }}"> - S'inscrire</a>
+                            {% endif %}
+                            {% if sortie.organisateur is same as app.user and sortie.etat.libelle is same as "Activité en cours" %}
+                                <a href="{{ path('sortie_modifier', {'id': sortie.id}) }}">Modifier</a>
+                            {% endif %}
+                            {% if sortie.organisateur is same as app.user and sortie.etat.libelle is same as "Créée" %}
+                                <a href="{{ path('sortie_modifier', {'id': sortie.id}) }}">Modifier</a>
+                                <a href="{{ path('sortie_publier', {'id': sortie.id}) }}"> - Publier</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+
+
+{% endblock %}
+{% block styleCss %}
+
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} | Accueil
+{% endblock %}
+

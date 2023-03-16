@@ -1,0 +1,157 @@
+/* Style général */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #F0F0F0;
+}
+
+/* Style pour la div infos_user */
+.infos_user {
+    background-color: #292C31;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+.infos_user h3 {
+    margin: 0;
+}
+
+/* Style pour la div form_search */
+.form_search {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_search form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_search button {
+    background-color: #292C31;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+/* Style pour le tableau des sorties */
+table {
+    margin: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th {
+    background-color: #292C31;
+    color: white;
+    text-align: left;
+    padding: 10px;
+    font-size: 16px;
+}
+
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    font-size: 14px;
+}
+
+td:nth-child(1) {
+    font-weight: bold;
+}
+
+td:nth-child(2), td:nth-child(3) {
+    text-align: center;
+}
+
+td:nth-child(5) {
+    text-transform: uppercase;
+}
+
+td:nth-child(6) {
+    text-align: center;
+    font-weight: bold;
+}
+
+td:nth-child(7) a {
+    color: #292C31;
+}
+
+td:nth-child(8) a {
+    color: white;
+    background-color: #292C31;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+td:nth-child(8) a:hover {
+    background-color: #42464B;
+}
+
+/* Media queries pour le responsive */
+@media (max-width: 768px) {
+
+    /* Style pour la div infos_user */
+    .infos_user {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .infos_user h3 {
+        margin-bottom: 10px;
+    }
+
+    /* Style pour la div form_search */
+    .form_search {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .form_search form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .form_search button {
+        margin: 10px 0 0 0;
+    }
+
+    /* Style pour le tableau des sorties */
+    td {
+        font-size: 12px;
+    }
+
+    td:nth-child(1) {
+        font-size: 14px;
+    }
+
+    td:nth-child(2), td:nth-child(3), td:nth-child(4), td:nth-child(5) {
+        display: none;
+    }
+
+    td:nth-child(6) {
+        text-align: left;
+        font-size: 14px;
+    }
+
+    td:nth-child(7) a {
+        display: none;
+    }
+
+
+    td:nth-child(8) a {
+        margin: 5px 0;
+        display: block;
+    }
+}

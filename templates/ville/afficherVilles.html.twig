@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Villes{% endblock %}
+
+{% block body %}
+
+    <h2>Filtrer les villes</h2>
+
+    {# pas de formType pour un seul champ mais un queryBuilder dans le VilleController #}
+    <form method="get" action="{{ path('ville_afficher') }}">
+        <label for="saisie">Le nom contient :</label>
+        <input type="text" id="saisie" name="saisie" value="{{ saisie ?? '' }}">
+        <button type="submit" class="link_button">Rechercher</button>
+    </form>
+
+
+    {% if villes is not empty %}
+
+        <table border>
+            <thead>
+            <tr>
+                <th>Ville</th>
+                <th>Code postal</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                {{ form_start(formVille) }}
+                <td>{{ form_row(formVille.nom) }}</td>
+                <td>{{ form_row(formVille.codePostal) }}</td>
+                <td>
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                </td>
+                {{ form_end(formVille) }}
+            </tr>
+            {% for ville in villes %}
+{#                {% if ville.id != ville_modif.id %}#}
+                    <tr>
+                        <td>{{ ville.nom }}</td>
+                        <td>{{ ville.codePostal }}</td>
+                        <td>
+                            <a href="{{ path('ville_modifier', {'id': ville.id}) }}" class="btn btn-primary">Modifier</a>
+                            <a href="{{ path('ville_supprimer', {'id': ville.id}) }}" class="btn btn-danger"
+                               onclick="return confirm('Êtes-vous sûr de vouloir supprimer {{ ville.nom }} ?')">
+                                Supprimer
+                            </a>
+                        </td>
+                    </tr>
+{#                {% endif %}#}
+            {% endfor %}
+            </tbody>
+        </table>
+
+    {% endif %}
+
+{% endblock %}
+

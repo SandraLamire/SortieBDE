@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Mon profil
+{% endblock %}
+
+{% block body %}
+    <div class="formGeneral profil">
+    <div class="titreForm"><h2>Mon profil</h2></div>
+
+    {% if asset('img/photoProfil/' ~ app.user.photoProfil) %}
+
+
+            <img src="{{ asset('img/photoProfil/' ~ app.user.photoProfil) }}"
+                 alt="{{ app.user.pseudo }}"
+                 title="{{ app.user.pseudo }}">
+
+    {% endif %}
+
+    <div class="inputContainer">
+        {{ form_start(participantForm) }}
+
+        {{ form_row(participantForm.photo_profil) }}
+        {{ form_row(participantForm.pseudo) }}
+        {{ form_row(participantForm.nom) }}
+        {{ form_row(participantForm.prenom) }}
+        {{ form_row(participantForm.telephone) }}
+        {{ form_row(participantForm.mail) }}
+        {{ form_row(participantForm.password) }}
+        {{ form_row(participantForm.campus) }}
+
+
+        <a href="{{ path('participant_modifier', {'id': app.user.id}) }}">
+            <button class="link_button enregistrer">Enregistrer</button>
+        </a>
+        <a href="{{ path('main_accueil') }}">
+            <button type="button" class="link_button annuler">Annuler</button>
+        </a>
+
+        {{ form_end(participantForm) }}
+    </div>
+    </div>
+
+{% endblock %}
+

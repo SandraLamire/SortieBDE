@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="formGeneral annulerSortie">
+        <div class="titreForm">Annuler Sortie</div>
+        <div class="infoSortie">Nom de la sortie : {{ sortie.nom }}</div>
+        <div class="infoSortie">Date de la sortie : {{ sortie.dateHeureDebut |date('d-m-Y') }}</div>
+        <div class="infoSortie">Campus : {{ sortie.siteOrganisateur.nom }}</div>
+        <div class="infoSortie">Lieu : {{ sortie.lieu.nom }}</div>
+
+
+        {# début du form #}
+        {{ form_start(AnnulerSortie) }}
+        <div class="inputContainer annulerSortieInput">
+
+            {# découpage par champ #}
+            {{ form_row(AnnulerSortie.infosSortie) }}
+
+            {# affichage du reste du form #}
+            {{ form_rest(AnnulerSortie) }}
+        </div>
+        <a href="{{ path('main_accueil') }}">
+            <button class="link_button enregistrer">Enregistrer</button>
+        </a>
+        <a href="{{ path('main_accueil') }}">
+            <button type="button" class="link_button annuler">Annuler</button>
+        </a>
+        {# fin du formulaire #}
+        {{ form_end(AnnulerSortie) }}
+
+    </div>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} | Annuler sortie !
+{% endblock %}

@@ -1,0 +1,29 @@
+<div class="navBar2">
+    <nav>
+        <ul>
+            {% if is_granted("ROLE_USER") %}
+                <li class="navLink">
+                    <a href="{{ path('main_accueil') }}">Accueil</a>
+                </li>
+                <li class="navLink">
+                    <a href="{{ path('participant_modifier', {'id': app.user.id}) }}">Mon profil</a>
+                </li>
+                <li class="navLink">
+                    <a href="{{ path('app_logout') }}">Se déconnecter</a>
+                </li>
+            {% endif %}
+            {% if is_granted("ROLE_ADMIN") %}
+                <li class="navLink">
+                    <a href="{{ path('ville_afficher') }}">Villes</a>
+                </li>
+                <li class="navLink">
+                    <a href="{{ path('campus_afficher') }}">Campus</a>
+                </li>
+                <li class="navLink">
+                    <a href="{{ path('participant_list', {'id': app.user.id}) }}">Liste des utilisateurs</a>
+                </li>
+            {% endif %}
+        </ul>
+        <div class="dot"></div>
+    </nav>
+</div>

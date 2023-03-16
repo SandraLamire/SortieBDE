@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="formGeneral">
+   <div class="titreForm"> <h2>Afficher une sortie</h2></div>
+
+
+        <div class="infoSortieAfficher">Nom de la sortie : {{ sortie.nom }} </div>
+        <div class="infoSortieAfficher">Date et heure de la sortie : {{ sortie.dateHeureDebut | date('d/m/Y H:i') }} </div>
+        <div class="infoSortieAfficher">Date limite d'inscription : {{ sortie.dateLimiteInscription | date('d/m/Y') }} </div>
+        <div class="infoSortieAfficher">Nombre de places: {{ sortie.nbInscriptionsMax }} </div>
+        <div class="infoSortieAfficher">Durée : {{ sortie.duree }} minutes</div>
+        <div class="infoSortieAfficher">Description et infos : {{ sortie.infosSortie }} </div>
+
+        <div class="infoSortieAfficher">Campus : {{ sortie.siteOrganisateur.nom }} </div>
+        <div class="infoSortieAfficher">Lieu : {{ sortie.lieu.nom }} </div>
+        <div class="infoSortieAfficher ">Rue : {{ sortie.lieu.rue }} à {{ sortie.lieu.ville.nom }} </div>
+        <div class="infoSortieAfficher">Code postal : {{ sortie.lieu.ville.codePostal }} </div>
+        <div class="infoSortieAfficher">Latitude : {{ sortie.lieu.latitude }} </div>
+        <div class="infoSortieAfficher">Longitude : {{ sortie.lieu.longitude }} </div>
+
+    </div>
+    <br>
+    <div class="list-participants">
+        <tr>
+            <td>
+                {% for participant in sortie.participants %}
+                    <option value="{{ participant.pseudo }}">{{ participant.nom }} {{ participant.prenom }}</option>
+                {% endfor %}
+            </td>
+        </tr>
+    </div>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} | Afficher une sortie !
+{% endblock %}
+

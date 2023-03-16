@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {# début du form #}
+    <div class="formGeneral modifierSortie">
+        <div class="titreForm"><h2>Modifier Sortie</h2></div>
+    {{ form_start(ModifierSortie) }}
+
+    <div class="inputContainer">
+        {# découpage par champ #}
+        {{ form_label(ModifierSortie.nom) }}
+        {{ form_widget(ModifierSortie.nom) }}
+        {{ form_errors(ModifierSortie.nom) }}
+
+
+    {# affichage du reste du form #}
+    {{ form_rest(ModifierSortie) }}
+    </div>
+    <a href="{{ path('main_accueil') }}"><button class="link_button enregistrer">Enregistrer</button></a>
+    <a href="{{ path('main_accueil') }}"><button class="link_button publier">Publier la sortie</button></a>
+    <a href="{{ path('main_accueil') }}"><button type="button" class="link_button annuler">Supprimer la sortie</button></a>
+    <a href="{{ path('main_accueil') }}"><button type="button" class="link_button annuler">Annuler</button></a>
+    {# fin du formulaire #}
+    {{ form_end(ModifierSortie) }}
+    </div>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} | modifier sortie !
+{% endblock %}
+

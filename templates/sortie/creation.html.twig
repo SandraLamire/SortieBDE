@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+{% form_theme sortieForm 'formTheme/formTheme.html.twig' %}
+
+
+    {% block title %}
+        {{ parent() }} |Creation d'un événement !
+    {% endblock %}
+
+{% block body %}
+    {# début du form #}
+    {{ form_start(sortieForm) }}
+    <div class="formGeneral">
+        <div class="titreForm">Creation Sortie</div>
+        <div class="inputContainer">
+            <div class="creationSortieNom">
+                {# découpage par champ #}
+                {{ form_label(sortieForm.nom) }}
+                {{ form_widget(sortieForm.nom) }}
+                {{ form_errors(sortieForm.nom) }}
+            </div>
+            <div class="creationSortieHd">
+                {# découpage par champ #}
+                {{ form_label(sortieForm.dateHeureDebut) }}
+                {{ form_widget(sortieForm.dateHeureDebut) }}
+                {{ form_errors(sortieForm.dateHeureDebut) }}
+            </div>
+            <div class="creationSortieDuree">
+                {# découpage par champ #}
+                {{ form_label(sortieForm.duree) }}
+                {{ form_widget(sortieForm.duree) }}
+                {{ form_errors(sortieForm.duree) }}
+            </div>
+            <div class="creationSortieDateLimiteInscription">
+                {# découpage par champ #}
+                {{ form_label(sortieForm.dateLimiteInscription) }}
+                {{ form_widget(sortieForm.dateLimiteInscription) }}
+                {{ form_errors(sortieForm.dateLimiteInscription) }}
+            </div>
+
+            <div class="creationSortieNbInscrMax">
+                {# découpage par champ #}
+                {{ form_label(sortieForm.nbInscriptionsMax) }}
+                {{ form_widget(sortieForm.nbInscriptionsMax) }}
+                {{ form_errors(sortieForm.nbInscriptionsMax) }}
+            </div>
+            <div class="creationSortieInfo">
+                {# découpage par champ #}
+                {{ form_label(sortieForm.infosSortie) }}
+                {{ form_widget(sortieForm.infosSortie) }}
+                {{ form_errors(sortieForm.infosSortie) }}
+            </div>
+            <div class="creationSortieCamp">
+                {# découpage par champ #}
+                {{ form_label(sortieForm.siteOrganisateur) }}
+                {{ form_widget(sortieForm.siteOrganisateur) }}
+                {{ form_errors(sortieForm.siteOrganisateur) }}
+            </div>
+            <div class="creationSortieLieu">
+                {# découpage par champ #}
+                {{ form_label(sortieForm.lieu) }}
+                {{ form_widget(sortieForm.lieu) }}
+                {{ form_errors(sortieForm.lieu) }}
+
+                <a href="{{ path('lieu_creation') }}">
+                    <button type="button"
+                            class=" lieuNouveau"><span>Nouveau lieu</span></button>
+                </a>
+            </div>
+        </div>
+        <div class="btnCreationSortie">
+            <button name="bjr" value="creee" class="link_button enregistrer"><span>Enregistrer</span></button>
+            <button name="bjr" value="publier" class="link_button publier"><span>Publier la sortie</span></button>
+            <a href="{{ path('main_accueil') }}">
+                <button type="button" class="link_button annuler"><span>Annuler</span></button>
+            </a>
+        </div>
+    </div>
+    {# affichage du reste du form #}
+    {{ form_rest(sortieForm) }}
+
+
+    {# fin du formulaire #}
+    {{ form_end(sortieForm) }}
+{% endblock %}

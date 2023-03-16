@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau profil{% endblock %}
+
+{% block body %}
+    <div class="formGeneral creerProfil">
+    <div class="titreForm"><h1>Créer un profil</h1></div>
+
+
+    <img src="{{ asset('img/photoProfil/' ~ app.user.photoProfil) }}"
+         alt="{{ app.user.pseudo }}"
+         title="{{ app.user.pseudo }}">
+
+
+        <div class="registrationForm">
+            {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.photo_profil) }}
+
+            {{ form_row(registrationForm.pseudo, {'attr': {'disabled': false}}) }}
+            {{ form_row(registrationForm.prenom, {'attr': {'disabled': false}}) }}
+            {{ form_row(registrationForm.nom, {'attr': {'disabled': false}}) }}
+            {{ form_row(registrationForm.telephone, {'attr': {'disabled': false}}) }}
+            {{ form_row(registrationForm.mail, {'attr': {'disabled': false}}) }}
+            {{ form_row(registrationForm.plainPassword, {label: 'Mot de passe', 'attr': {'disabled': false}}) }}
+            {{ form_row(registrationForm.campus, {'attr': {'disabled': false}}) }}
+
+        {# TODO : régler le pb The EntityManager is closed quand pseudo ou mail existe déjà #}
+        {# enregistrement d'un utilisateur crée manuellement #}
+        <button type="submit" class="btn">Enregistrer</button>
+
+            {{ form_end(registrationForm) }}
+        </div>
+
+    {% if is_granted("ROLE_ADMIN") %}
+
+        {# appel à la fonction upload de fichier csv #}
+    <div class="form-container mt-5">
+        {{ form_start(csvForm) }}
+        {{ form_widget(csvForm) }}
+    </div>
+
+        <button type="submit" class="link_button enregistrer">Enregistrer</button>
+        <a href="{{ path("participant_list") }}">
+            <button type="button" class="link_button annule">Annuler</button>
+        </a>
+        {{ form_end(csvForm) }}
+
+    </div>
+
+        {% endif %}
+
+{% endblock %}
+        {#        <form method="post" action="{{ path('registration_register') }}" enctype="multipart/form-data" id="import-form"> #}
+        {#            <div class="form-group"> #}
+        {#                <label for="fichier_csv">Fichier CSV</label> #}
+        {#                <input type="file" id="fichier_csv" name="fichier_csv" class="form-control-file"> #}
+        {#            </div> #}
+        {#            <button type="submit" class="btn btn-primary">Importer le fichier .csv</button> #}
+        {#        </form> #}
+
+
+        {#     js pour désactiver saisie manuelle au clic sur télécharger un fichier csv #}
+        {#    <script> #}
+        {#        document.getElementById('import-form').addEventListener('submit', function (event) { #}
+        {#            event.preventDefault(); #}
+        {#            disableFormFields(); #}
+        {#            this.submit(); #}
+        {#        }); #}
+
+        {#        function disableFormFields() { #}
+        {#            document.querySelectorAll('#registration_form input, #registration_form select, #registration_form textarea').forEach(function (field) { #}
+        {#                field.disabled = true; #}
+        {#            }); #}
+        {#        } #}
+        {#    </script> #}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Profil de l'organisateur
+{% endblock %}
+
+{% block body %}
+<div class="formGeneral">
+    <div class="titreForm"><h2>{{ organisateur.pseudo }}</h2></div>
+
+    
+{#        if elle existe#}
+        {% if asset('img/photoProfil/' ~ organisateur.photoProfil) %}
+        <img src="{{ asset('img/photoProfil/' ~ organisateur.photoProfil) }}" alt="{{ organisateur.pseudo }}">
+        {% endif %}
+    
+    <div class="infoOrganisateur">Prénom : {{ organisateur.prenom }}</div>
+    <div class="infoOrganisateur">Nom : {{ organisateur.nom }}</div>
+    <div class="infoOrganisateur">Téléphone : {{ organisateur.telephone }}</div>
+    <div class="infoOrganisateur" >Mail : {{ organisateur.mail }}</div>
+    <div class="infoOrganisateur">Campus : {{ organisateur.campus.nom }}</div>
+    <br>
+    <a href="{{ path('main_accueil') }}"><button type="button" class="link_button btnCreerSortie">Retour</button></a>
+</div>
+{% endblock %}
+
+
+
